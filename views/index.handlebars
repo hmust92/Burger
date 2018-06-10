@@ -1,0 +1,79 @@
+<h1>Time to eat that burger.</h1>
+
+<div id = "burg">
+	<h2>The Following are the Burgers: </h2>
+	<ul>
+		{{#each burgers}} {{#unless this.devoured}}
+		<li>
+			{{this.id}}. {{this.burger_name}}
+
+			<form action="/{{this.id}}?_method=PUT" method="POST">
+				<input type="hidden" name="devoured" value="false">
+				<button class="btn btn-wearning" type="sumbit"> Eat IT</button>
+			</form>
+
+		<li>
+		{{/unless}} {{/each}}
+	</ul>
+</div>
+
+<div id="eaten">
+	<h2>Burgers have been eaten:</h2>
+
+	<ul>
+		{{#each burgers}} {{#if this.devoured}}
+		<li>
+			{{this.id}}. {{this.burger_name}}
+		</li>
+		{{/if}} {{/each}}
+	</ul>
+
+</div>
+
+<div id="add">
+	<h2>Add a burger:</h2>
+
+	<form class="createUpdateForm" action="/" method="POST">
+		<div class="form-group">
+			<label for="dab">Burger Name:</label>
+			<input type="text" id="dab" name="burger_name">
+		</div>
+		<button class="btn btn-primary" type="submit">Add The Burger</button>
+	</form>
+</div>
+
+<style>
+body {
+    font-family: 'Germania One', cursive;
+    width: 100%;
+    background-image: url('../img/Burger%20background.jpg');
+}
+
+h1 {
+text-align:center;
+}
+
+#burg {
+    float: left;
+    margin-right: 6%;
+    margin-left: 10%;
+
+
+}
+
+#eaten {
+    float: left;
+
+}
+
+li {
+    font-size: 20px;
+    list-style-type: none;
+}
+
+
+#add {
+    clear: both;
+    margin-left: 25%;
+}
+</style>
